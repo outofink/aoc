@@ -1,4 +1,4 @@
-use super::{Input, Day};
+use super::{Day, Input};
 
 pub fn part_a(input: &Input) -> i32 {
     let mut total = 0;
@@ -19,11 +19,10 @@ pub fn part_a(input: &Input) -> i32 {
 pub fn part_b(input: &Input) -> i32 {
     let mut total = 0;
     for line in input.contents.lines() {
-        let dims = line
+        let mut dims = line
             .split('x')
-            .map(|s| s.to_string().parse::<i32>().unwrap())
-            .collect::<Vec<i32>>();
-        let (l, w, h) = (dims[0], dims[1], dims[2]);
+            .map(|s| s.to_string().parse::<i32>().unwrap());
+        let (l, w, h) = [(); 3].map(|()| dims.next().unwrap());
         let way1 = 2 * l + 2 * w;
         let way2 = 2 * w + 2 * h;
         let way3 = 2 * h + 2 * l;
