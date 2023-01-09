@@ -1,5 +1,6 @@
 mod day01;
 mod day02;
+mod day03;
 
 use std::fs;
 
@@ -21,7 +22,7 @@ impl Input {
     }
 }
 pub fn run(date: u8) {
-    let days = &[&day01::DAY, &day02::DAY];
+    let days = &[&day01::DAY, &day02::DAY, &day03::DAY];
     if let Some(day) = days.get(date as usize - 1) {
         println!("Day {}:", date);
         let input = Input::init(date);
