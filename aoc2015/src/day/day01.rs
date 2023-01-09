@@ -1,17 +1,17 @@
-use super::{Data, Day};
+use super::{Input, Day};
 
-pub fn part_a(data: &Data) -> i32 {
+pub fn part_a(input: &Input) -> i32 {
     let mut floor = 0;
-    data.contents.chars().for_each(|c| match c {
+    input.contents.chars().for_each(|c| match c {
         '(' => floor += 1,
         ')' => floor -= 1,
         _ => (),
     });
     floor
 }
-pub fn part_b(data: &Data) -> i32 {
+pub fn part_b(input: &Input) -> i32 {
     let mut floor = 0;
-    for (idx, c) in data.contents.chars().enumerate() {
+    for (idx, c) in input.contents.chars().enumerate() {
         match c {
             '(' => floor += 1,
             ')' => floor -= 1,

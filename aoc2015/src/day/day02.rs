@@ -1,8 +1,8 @@
-use super::{Data, Day};
+use super::{Input, Day};
 
-pub fn part_a(data: &Data) -> i32 {
+pub fn part_a(input: &Input) -> i32 {
     let mut total = 0;
-    for line in data.contents.lines() {
+    for line in input.contents.lines() {
         let dims = line
             .split('x')
             .map(|s| s.to_string().parse::<i32>().unwrap())
@@ -16,9 +16,9 @@ pub fn part_a(data: &Data) -> i32 {
     }
     total
 }
-pub fn part_b(data: &Data) -> i32 {
+pub fn part_b(input: &Input) -> i32 {
     let mut total = 0;
-    for line in data.contents.lines() {
+    for line in input.contents.lines() {
         let dims = line
             .split('x')
             .map(|s| s.to_string().parse::<i32>().unwrap())
