@@ -1,17 +1,5 @@
-use std::fs;
+use super::{Data, Day};
 
-pub struct Data {
-    contents: String,
-}
-
-impl Data {
-    pub fn init() -> Data {
-        Data {
-            contents: fs::read_to_string("input/1.txt")
-                .expect("Something went wrong reading the file"),
-        }
-    }
-}
 pub fn part_a(data: &Data) -> i32 {
     let mut floor = 0;
     data.contents.chars().for_each(|c| match c {
@@ -35,3 +23,5 @@ pub fn part_b(data: &Data) -> i32 {
     }
     floor
 }
+
+pub static DAY: Day = Day { part_a, part_b };
