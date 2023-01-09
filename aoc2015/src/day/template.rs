@@ -1,4 +1,4 @@
-use super::{Input, Day};
+use super::{Day, Input};
 
 pub fn part_a(input: &Input) -> i32 {
     0
