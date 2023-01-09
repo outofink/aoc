@@ -1,5 +1,4 @@
 use super::{Input, Day};
-use md5;
 
 pub fn part_a(input: &Input) -> i32 {
     let mut i = 0;
