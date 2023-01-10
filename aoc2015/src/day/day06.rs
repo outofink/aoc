@@ -38,15 +38,15 @@ pub fn process(input: &Input) -> Vec<Instruction> {
         let begin_second = end_first + "through".len() + 1;
         let first = &trimmed[..end_first];
         let second = &trimmed[begin_second..];
-        
+
         let first_index = first.find(',').unwrap();
         let first1 = &first[..first_index].parse().unwrap();
         let first2 = &first[first_index + 1..first.len() - 1].parse().unwrap();
-        
+
         let second_index = second.find(',').unwrap();
         let second1 = &second[..second_index].parse().unwrap();
         let second2 = &second[second_index + 1..second.len()].parse().unwrap();
-        
+
         instuctions.push(Instruction {
             op,
             start: Coordinate {
@@ -64,37 +64,53 @@ pub fn process(input: &Input) -> Vec<Instruction> {
 pub fn part_a(input: &Input) -> i32 {
     let mut lights = [[false; 1000]; 1000];
     for instruction in process(input) {
-        for x in instruction.start.x..=instruction.end.x {
-            for y in instruction.start.y..=instruction.end.y {
+        for row in lights
+            .iter_mut()
+            .take(instruction.end.x + 1)
+            .skip(instruction.start.x)
+        {
+            for light in row
+                .iter_mut()
+                .take(instruction.end.y + 1)
+                .skip(instruction.start.y)
+            {
                 match instruction.op {
-                    Operation::Toggle => lights[x][y] = !lights[x][y],
-                    Operation::On => lights[x][y] = true,
-                    Operation::Off => lights[x][y] = false,
+                    Operation::Toggle => *light = !*light,
+                    Operation::On => *light = true,
+                    Operation::Off => *light = false,
                 }
             }
         }
     }
     let mut total = 0;
-    for x in 0..1000 {
-        for y in 0..1000 {
-            if lights[x][y] {
+    lights.iter().for_each(|row| {
+        row.iter().for_each(|light| {
+            if *light {
                 total += 1;
             }
-        }
-    }
+        });
+    });
     total
 }
 pub fn part_b(input: &Input) -> i32 {
     let mut lights = [[0; 1000]; 1000];
     for instruction in process(input) {
-        for x in instruction.start.x..=instruction.end.x {
-            for y in instruction.start.y..=instruction.end.y {
+        for row in lights
+            .iter_mut()
+            .take(instruction.end.x + 1)
+            .skip(instruction.start.x)
+        {
+            for light in row
+                .iter_mut()
+                .take(instruction.end.y + 1)
+                .skip(instruction.start.y)
+            {
                 match instruction.op {
-                    Operation::Toggle => lights[x][y] += 2,
-                    Operation::On => lights[x][y] += 1,
+                    Operation::Toggle => *light += 2,
+                    Operation::On => *light += 1,
                     Operation::Off => {
-                        if lights[x][y] != 0 {
-                            lights[x][y] -= 1
+                        if *light != 0 {
+                            *light -= 1;
                         }
                     }
                 }
@@ -102,11 +118,11 @@ pub fn part_b(input: &Input) -> i32 {
         }
     }
     let mut total = 0;
-    for x in 0..1000 {
-        for y in 0..1000 {
-            total += lights[x][y];
-        }
-    }
+    lights.iter().for_each(|row| {
+        row.iter().for_each(|light| {
+            total += light;
+        });
+    });
     total
 }
 
