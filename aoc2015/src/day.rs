@@ -5,6 +5,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 
 use std::fs;
 
@@ -34,6 +35,7 @@ pub fn run(date: u8) {
         &day05::DAY,
         &day06::DAY,
         &day07::DAY,
+        &day08::DAY
     ];
     if let Some(day) = days.get(date as usize - 1) {
         println!("Day {}:", date);
