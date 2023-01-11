@@ -21,9 +21,9 @@ pub struct Input {
 }
 
 impl Input {
-    pub fn init(day: u8) -> Input {
-        Input {
-            contents: fs::read_to_string(format!("input/{}.txt", day))
+    pub fn init(day: u8) -> Self {
+        Self {
+            contents: fs::read_to_string(format!("input/{day}.txt"))
                 .expect("Something went wrong reading the file"),
         }
     }
@@ -39,14 +39,17 @@ pub fn run(date: u8) {
         &day07::DAY,
         &day08::DAY,
         &day09::DAY,
-        &day10::DAY
+        &day10::DAY,
     ];
-    if let Some(day) = days.get(date as usize - 1) {
-        println!("Day {}:", date);
-        let input = Input::init(date);
-        println!("Part A: {}", (day.part_a)(&input));
-        println!("Part B: {}", (day.part_b)(&input));
-    } else {
-        println!("Day {} not implemented yet", date);
-    }
+    days.get(date as usize - 1).map_or_else(
+        || {
+            println!("Day {date} not implemented yet");
+        },
+        |day| {
+            println!("Day {date}:");
+            let input = Input::init(date);
+            println!("Part A: {}", (day.part_a)(&input));
+            println!("Part B: {}", (day.part_b)(&input));
+        },
+    );
 }

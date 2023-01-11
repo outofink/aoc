@@ -10,12 +10,12 @@ pub fn part_a(input: &Input) -> i32 {
         let mut i = 0;
         while i < line.len() {
             if chars[i] == '\\' {
-                if chars[i + 1] != 'x' {
-                    total -= 1;
-                    i += 1;
-                } else {
+                if chars[i + 1] == 'x' {
                     total -= 3;
                     i += 3;
+                } else {
+                    total -= 1;
+                    i += 1;
                 }
             }
             i += 1;

@@ -20,7 +20,7 @@ fn process(data: &str) -> (Graph, Path) {
     (graph, path)
 }
 
-fn path_lengths(graph: &Graph, paths: Path) -> Vec<u32> {
+fn path_lengths(graph: &Graph, paths: &Path) -> Vec<u32> {
     let mut lengths = vec![];
     for path in paths.iter().permutations(paths.len()).unique() {
         let mut len = 0;
@@ -46,12 +46,12 @@ fn path_lengths(graph: &Graph, paths: Path) -> Vec<u32> {
 
 pub fn part_a(input: &Input) -> i32 {
     let (graph, paths) = process(&input.contents);
-    *path_lengths(&graph, paths).iter().min().unwrap() as i32
+    (*path_lengths(&graph, &paths).iter().min().unwrap()).try_into().unwrap()
 }
 
 pub fn part_b(input: &Input) -> i32 {
     let (graph, paths) = process(&input.contents);
-    *path_lengths(&graph, paths).iter().max().unwrap() as i32
+    (*path_lengths(&graph, &paths).iter().max().unwrap()).try_into().unwrap()
 }
 
 pub static DAY: Day = Day { part_a, part_b };

@@ -1,6 +1,6 @@
 use super::{Day, Input};
 
-fn look_and_say(input: String) -> String {
+fn look_and_say(input: &str) -> String {
     let mut output = String::new();
     let mut count: u8 = 0;
     let mut last = ' ';
@@ -24,14 +24,14 @@ fn look_and_say(input: String) -> String {
 pub fn part_a(input: &Input) -> i32 {
     let mut output = input.contents.clone();
     for _ in 0..40 {
-        output = look_and_say(output);
+        output = look_and_say(&output);
     }
     output.len().try_into().unwrap()
 }
 pub fn part_b(input: &Input) -> i32 {
     let mut output = input.contents.clone();
     for _ in 0..50 {
-        output = look_and_say(output);
+        output = look_and_say(&output);
     }
     output.len().try_into().unwrap()
 }

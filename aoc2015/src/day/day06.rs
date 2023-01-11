@@ -61,8 +61,9 @@ pub fn process(input: &Input) -> Vec<Instruction> {
     }
     instuctions
 }
+
 pub fn part_a(input: &Input) -> i32 {
-    let mut lights = [[false; 1000]; 1000];
+    let mut lights = vec![[false; 1000]; 1000].into_boxed_slice();
     for instruction in process(input) {
         for row in lights
             .iter_mut()
@@ -83,17 +84,18 @@ pub fn part_a(input: &Input) -> i32 {
         }
     }
     let mut total = 0;
-    lights.iter().for_each(|row| {
-        row.iter().for_each(|light| {
+    for row in lights.iter() {
+        for light in row.iter() {
             if *light {
                 total += 1;
             }
-        });
-    });
+        }
+    }
     total
 }
+
 pub fn part_b(input: &Input) -> i32 {
-    let mut lights = [[0; 1000]; 1000];
+    let mut lights = vec![[0; 1000]; 1000].into_boxed_slice();
     for instruction in process(input) {
         for row in lights
             .iter_mut()
@@ -118,11 +120,11 @@ pub fn part_b(input: &Input) -> i32 {
         }
     }
     let mut total = 0;
-    lights.iter().for_each(|row| {
-        row.iter().for_each(|light| {
+    for row in lights.iter() {
+        for light in row.iter() {
             total += light;
-        });
-    });
+        }
+    }
     total
 }
 

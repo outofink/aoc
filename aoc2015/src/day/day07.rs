@@ -2,7 +2,6 @@ use std::collections::HashMap;
 
 use super::{Day, Input};
 
-#[derive(Debug)]
 pub enum Operation {
     And(String, String),
     Or(String, String),
@@ -16,6 +15,7 @@ pub struct Machine {
     instructions: HashMap<String, Operation>,
     wires: HashMap<String, u16>,
 }
+
 impl Machine {
     fn get_output(&mut self, output: &String) -> u16 {
         if let Ok(val) = output.parse::<u16>() {
@@ -104,7 +104,7 @@ pub fn part_a(input: &Input) -> i32 {
         instructions: process(&input.contents),
         wires: HashMap::new(),
     };
-    machine.get_output(&"a".to_string()) as i32
+    machine.get_output(&"a".to_string()).try_into().unwrap()
 }
 pub fn part_b(input: &Input) -> i32 {
     let mut machine = Machine {
@@ -114,7 +114,7 @@ pub fn part_b(input: &Input) -> i32 {
     let a = machine.get_output(&"a".to_string());
     machine.wires = HashMap::new();
     machine.wires.insert("b".to_string(), a);
-    machine.get_output(&"a".to_string()) as i32
+    machine.get_output(&"a".to_string()).try_into().unwrap()
 }
 
 pub static DAY: Day = Day { part_a, part_b };

@@ -17,7 +17,7 @@ pub fn part_a(input: &Input) -> i32 {
             locations.push((x, y));
         }
     }
-    locations.len() as i32
+    locations.len().try_into().unwrap()
 }
 
 pub fn part_b(input: &Input) -> i32 {
@@ -48,7 +48,7 @@ pub fn part_b(input: &Input) -> i32 {
             locations.push((x2, y2));
         }
     }
-    locations.len() as i32
+    locations.len().try_into().unwrap()
 }
 
 pub static DAY: Day = Day { part_a, part_b };

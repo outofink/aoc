@@ -18,7 +18,7 @@ pub fn part_b(input: &Input) -> i32 {
             _ => (),
         }
         if floor == -1 {
-            return idx as i32 + 1;
+            return (idx + 1).try_into().unwrap();
         }
     }
     floor
