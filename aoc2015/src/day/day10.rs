@@ -2,12 +2,11 @@ use super::{Day, Input};
 
 fn look_and_say(input: &str) -> String {
     let mut output = String::new();
-    let mut count: u8 = 0;
+    let mut count: u8 = 1;
     let mut last = ' ';
     for c in input.chars() {
         if last == ' ' {
             last = c;
-            count += 1;
         } else if last == c {
             count += 1;
         } else {
