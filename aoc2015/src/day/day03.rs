@@ -1,4 +1,5 @@
 use super::{Day, Input};
+use itertools::Itertools;
 
 pub fn part_a(input: &Input) -> i32 {
     let mut locations = vec![(0, 0)];
@@ -25,8 +26,7 @@ pub fn part_b(input: &Input) -> i32 {
     let mut y1 = 0;
     let mut x2 = 0;
     let mut y2 = 0;
-    for chars in input.contents.chars().collect::<Vec<char>>().chunks(2) {
-        let [c1, c2] = chars else {panic!("Odd number of characters")};
+    for (c1, c2) in input.contents.chars().tuples() {
         match c1 {
             '^' => y1 -= 1,
             'v' => y1 += 1,
