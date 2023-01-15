@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use super::{Day, Input};
+use super::{Day, Input, Types};
 
 pub enum Operation {
     And(String, String),
@@ -99,14 +99,14 @@ fn process(input: &str) -> HashMap<String, Operation> {
     instructions
 }
 
-pub fn part_a(input: &Input) -> i32 {
+pub fn part_a(input: &Input) -> Types {
     let mut machine = Machine {
         instructions: process(&input.contents),
         wires: HashMap::new(),
     };
-    machine.get_output(&"a".to_string()).try_into().unwrap()
+    Types::Number(machine.get_output(&"a".to_string()).try_into().unwrap())
 }
-pub fn part_b(input: &Input) -> i32 {
+pub fn part_b(input: &Input) -> Types {
     let mut machine = Machine {
         instructions: process(&input.contents),
         wires: HashMap::new(),
@@ -114,7 +114,7 @@ pub fn part_b(input: &Input) -> i32 {
     let a = machine.get_output(&"a".to_string());
     machine.wires = HashMap::new();
     machine.wires.insert("b".to_string(), a);
-    machine.get_output(&"a".to_string()).try_into().unwrap()
+    Types::Number(machine.get_output(&"a".to_string()).try_into().unwrap())
 }
 
 pub static DAY: Day = Day { part_a, part_b };

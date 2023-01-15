@@ -1,4 +1,4 @@
-use super::{Day, Input};
+use super::{Day, Input, Types};
 
 pub enum Operation {
     Off,
@@ -62,7 +62,7 @@ pub fn process(input: &Input) -> Vec<Instruction> {
     instuctions
 }
 
-pub fn part_a(input: &Input) -> i32 {
+pub fn part_a(input: &Input) -> Types {
     let mut lights = vec![[false; 1000]; 1000].into_boxed_slice();
     for instruction in process(input) {
         for row in lights
@@ -91,10 +91,10 @@ pub fn part_a(input: &Input) -> i32 {
             }
         }
     }
-    total
+    Types::Number(total)
 }
 
-pub fn part_b(input: &Input) -> i32 {
+pub fn part_b(input: &Input) -> Types {
     let mut lights = vec![[0; 1000]; 1000].into_boxed_slice();
     for instruction in process(input) {
         for row in lights
@@ -125,7 +125,7 @@ pub fn part_b(input: &Input) -> i32 {
             total += light;
         }
     }
-    total
+    Types::Number(total)
 }
 
 pub static DAY: Day = Day { part_a, part_b };

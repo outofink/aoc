@@ -9,17 +9,30 @@ mod day08;
 mod day09;
 mod day10;
 
+use std::fmt;
 use std::fs;
 
 pub struct Day {
-    pub part_a: fn(&Input) -> i32,
-    pub part_b: fn(&Input) -> i32,
+    pub part_a: fn(&Input) -> Types,
+    pub part_b: fn(&Input) -> Types,
 }
 
 pub struct Input {
     pub contents: String,
 }
 
+pub enum Types {
+    String(String),
+    Number(usize),
+}
+impl fmt::Display for Types {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Types::String(s) => write!(f, "{}", s),
+            Types::Number(n) => write!(f, "{}", n),
+        }
+    }
+}
 impl Input {
     pub fn init(day: u8) -> Self {
         Self {

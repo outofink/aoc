@@ -1,4 +1,4 @@
-use super::{Day, Input};
+use super::{Day, Input, Types};
 
 fn look_and_say(input: &str) -> String {
     let mut output = String::new();
@@ -20,19 +20,19 @@ fn look_and_say(input: &str) -> String {
     output.push(last);
     output
 }
-pub fn part_a(input: &Input) -> i32 {
+pub fn part_a(input: &Input) -> Types {
     let mut output = input.contents.clone();
     for _ in 0..40 {
         output = look_and_say(&output);
     }
-    output.len().try_into().unwrap()
+    Types::Number(output.len().try_into().unwrap())
 }
-pub fn part_b(input: &Input) -> i32 {
+pub fn part_b(input: &Input) -> Types {
     let mut output = input.contents.clone();
     for _ in 0..50 {
         output = look_and_say(&output);
     }
-    output.len().try_into().unwrap()
+    Types::Number(output.len().try_into().unwrap())
 }
 
 pub static DAY: Day = Day { part_a, part_b };

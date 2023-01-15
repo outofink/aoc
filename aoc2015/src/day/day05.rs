@@ -1,6 +1,6 @@
-use super::{Day, Input};
+use super::{Day, Input, Types};
 
-pub fn part_a(input: &Input) -> i32 {
+pub fn part_a(input: &Input) -> Types {
     let mut nice = 0;
     for line in input.contents.lines() {
         let mut vowels = 0;
@@ -22,9 +22,9 @@ pub fn part_a(input: &Input) -> i32 {
             nice += 1;
         }
     }
-    nice
+    Types::Number(nice)
 }
-pub fn part_b(input: &Input) -> i32 {
+pub fn part_b(input: &Input) -> Types {
     let mut nice = 0;
     for line in input.contents.lines() {
         let mut repeat = false;
@@ -46,7 +46,7 @@ pub fn part_b(input: &Input) -> i32 {
             nice += 1;
         }
     }
-    nice
+    Types::Number(nice)
 }
 
 pub static DAY: Day = Day { part_a, part_b };

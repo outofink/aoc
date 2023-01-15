@@ -1,7 +1,7 @@
-use super::{Day, Input};
+use super::{Day, Input, Types};
 use itertools::Itertools;
 
-pub fn part_a(input: &Input) -> i32 {
+pub fn part_a(input: &Input) -> Types {
     let mut locations = vec![(0, 0)];
     let mut x = 0;
     let mut y = 0;
@@ -17,10 +17,10 @@ pub fn part_a(input: &Input) -> i32 {
             locations.push((x, y));
         }
     }
-    locations.len().try_into().unwrap()
+    Types::Number(locations.len().try_into().unwrap())
 }
 
-pub fn part_b(input: &Input) -> i32 {
+pub fn part_b(input: &Input) -> Types {
     let mut locations = vec![(0, 0)];
     let mut x1 = 0;
     let mut y1 = 0;
@@ -48,7 +48,7 @@ pub fn part_b(input: &Input) -> i32 {
             locations.push((x2, y2));
         }
     }
-    locations.len().try_into().unwrap()
+    Types::Number(locations.len().try_into().unwrap())
 }
 
 pub static DAY: Day = Day { part_a, part_b };
