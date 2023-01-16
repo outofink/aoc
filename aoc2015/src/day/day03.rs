@@ -17,7 +17,7 @@ pub fn part_a(input: &Input) -> Types {
             locations.push((x, y));
         }
     }
-    Types::Number(locations.len().try_into().unwrap())
+    Types::Number(locations.len())
 }
 
 pub fn part_b(input: &Input) -> Types {
@@ -48,7 +48,7 @@ pub fn part_b(input: &Input) -> Types {
             locations.push((x2, y2));
         }
     }
-    Types::Number(locations.len().try_into().unwrap())
+    Types::Number(locations.len())
 }
 
 pub static DAY: Day = Day { part_a, part_b };

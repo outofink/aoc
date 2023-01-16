@@ -21,7 +21,7 @@ pub fn part_a(input: &Input) -> Types {
             i += 1;
         }
     }
-    Types::Number((total_raw - total).try_into().unwrap())
+    Types::Number(total_raw - total)
 }
 pub fn part_b(input: &Input) -> Types {
     let mut total = 0;
@@ -37,7 +37,7 @@ pub fn part_b(input: &Input) -> Types {
             }
         }
     }
-    Types::Number((total - total_raw).try_into().unwrap())
+    Types::Number(total - total_raw)
 }
 
 pub static DAY: Day = Day { part_a, part_b };

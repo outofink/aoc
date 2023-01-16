@@ -25,14 +25,14 @@ pub fn part_a(input: &Input) -> Types {
     for _ in 0..40 {
         output = look_and_say(&output);
     }
-    Types::Number(output.len().try_into().unwrap())
+    Types::Number(output.len())
 }
 pub fn part_b(input: &Input) -> Types {
     let mut output = input.contents.clone();
     for _ in 0..50 {
         output = look_and_say(&output);
     }
-    Types::Number(output.len().try_into().unwrap())
+    Types::Number(output.len())
 }
 
 pub static DAY: Day = Day { part_a, part_b };

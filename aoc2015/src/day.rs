@@ -30,8 +30,8 @@ pub enum Types {
 impl fmt::Display for Types {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Types::String(s) => write!(f, "{}", s),
-            Types::Number(n) => write!(f, "{}", n),
+            Self::String(s) => write!(f, "{s}"),
+            Self::Number(n) => write!(f, "{n}"),
         }
     }
 }

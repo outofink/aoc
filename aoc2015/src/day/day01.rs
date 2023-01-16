@@ -18,7 +18,7 @@ pub fn part_b(input: &Input) -> Types {
             _ => (),
         }
         if floor == -1 {
-            return Types::Number((idx + 1).try_into().unwrap());
+            return Types::Number(idx + 1);
         }
     }
     Types::Number(floor.try_into().unwrap())
