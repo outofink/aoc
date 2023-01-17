@@ -11,6 +11,7 @@ mod day10;
 mod day11;
 mod day12;
 mod day13;
+mod day14;
 
 use std::fmt;
 use std::fs;
@@ -59,6 +60,7 @@ pub fn run(date: u8) {
         &day11::DAY,
         &day12::DAY,
         &day13::DAY,
+        &day14::DAY,
     ];
     days.get(date as usize - 1).map_or_else(
         || {
